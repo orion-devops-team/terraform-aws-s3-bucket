@@ -12,6 +12,7 @@ locals {
   intelligent_tiering = try(jsondecode(var.intelligent_tiering), var.intelligent_tiering)
 }
 
+#checkov:skip=DS_AWS_S3_03:To build buckets via external modules
 resource "aws_s3_bucket" "this" {
   count = local.create_bucket ? 1 : 0
 
