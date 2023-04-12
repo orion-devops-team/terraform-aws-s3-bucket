@@ -23,7 +23,7 @@ resource "aws_s3_bucket" "this" {
   object_lock_enabled = var.object_lock_enabled
   tags                = var.tags
 
-  lifecycle {
+/*  lifecycle {
     ignore_changes = [
       acceleration_status,
       acl,
@@ -38,7 +38,7 @@ resource "aws_s3_bucket" "this" {
       versioning,
       website
     ]
-  }
+  }*/
 }
 
 resource "aws_s3_bucket_logging" "this" {
