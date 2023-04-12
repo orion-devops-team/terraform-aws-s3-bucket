@@ -29,7 +29,7 @@ resource "aws_s3_bucket" "this" {
       acl,
       grant,
       cors_rule,
-      lifecycle_rule,
+      #lifecycle_rule,
       logging,
       object_lock_configuration,
       replication_configuration,
