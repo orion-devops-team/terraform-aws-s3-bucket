@@ -218,6 +218,14 @@ resource "aws_s3_bucket_lifecycle_configuration" "this" {
   bucket                = aws_s3_bucket.this[0].id
   expected_bucket_owner = var.expected_bucket_owner
 
+  rule {
+    id     = "Incomplete multi-part uploads"
+    status = "Enabled"
+
+    abort_incomplete_multipart_upload {
+      days_after_initiation = 8
+  }
+     
   dynamic "rule" {
     for_each = local.lifecycle_rules
 
