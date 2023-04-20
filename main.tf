@@ -15,7 +15,6 @@ locals {
 resource "aws_s3_bucket" "this" {
   #checkov:skip=DS_AWS_S3_03:To build buckets via external modules
   #checkov:skip=CC_AWS_S3_01:To build buckets via external modules
-  #checkov:skip=CKV_AWS_300:To build buckets via external modules
   count = local.create_bucket ? 1 : 0
 
   bucket        = var.bucket
@@ -207,6 +206,7 @@ resource "aws_s3_bucket_cors_configuration" "this" {
 }
 
 resource "aws_s3_bucket_lifecycle_configuration" "this" {
+  #checkov:skip=CKV_AWS_300:To build buckets via external modules
   count = local.create_bucket && length(local.lifecycle_rules) > 0 ? 1 : 0
 
   bucket                = aws_s3_bucket.this[0].id
