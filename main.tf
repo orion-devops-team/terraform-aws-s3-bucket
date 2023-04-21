@@ -13,8 +13,6 @@ locals {
 }
 
 resource "aws_s3_bucket" "this" {
-  #checkov:skip=DS_AWS_S3_03:To build buckets via external modules
-  #checkov:skip=CC_AWS_S3_01:To build buckets via external modules
   count = local.create_bucket ? 1 : 0
 
   bucket        = var.bucket
